@@ -1,6 +1,12 @@
 package com.example.Mydemo.domain.member.login;
 
 
+import com.example.Mydemo.domain.member.Member;
+import com.example.Mydemo.domain.member.dao.MemberDao;
+import com.example.Mydemo.domain.member.login.socialLogin.GoogleOauth;
+import com.example.Mydemo.domain.member.login.socialType.SocialLoginType;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

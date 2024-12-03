@@ -1,11 +1,16 @@
 package com.example.Mydemo.domain.member.login.socialLogin;
 
-
+import com.example.Mydemo.domain.member.login.socialLogin.SocialOauth;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +18,7 @@ import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
-public class GoogleOauth implements SocialOauth{
+public class GoogleOauth implements SocialOauth {
 
     //applications.yml 에서 value annotation을 통해서 값을 받아온다.
     @Value("${spring.OAuth2.google.url}")

@@ -1,5 +1,7 @@
 package com.example.Mydemo.domain.member;
 
+import lombok.*;
+
 import java.time.LocalDateTime;
 
 @Data
