@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    include: oauth
+  OAuth2: #social login
+    google:
+      url: https://accounts.google.com/o/oauth2/v2/auth
+      client-id: AA
+      client-secret: AA
+      callback-url: http://localhost:8080/login/oauth2/code/google
+      scope: https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile

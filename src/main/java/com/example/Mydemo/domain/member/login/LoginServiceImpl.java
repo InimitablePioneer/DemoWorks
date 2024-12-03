@@ -2,6 +2,7 @@ package com.example.Mydemo.domain.member.login;
 
 
 import com.example.Mydemo.domain.member.Member;
+import com.example.Mydemo.domain.member.MemberRepo;
 import com.example.Mydemo.domain.member.dao.MemberDao;
 import com.example.Mydemo.domain.member.login.socialLogin.GoogleOauth;
 import com.example.Mydemo.domain.member.login.socialType.SocialLoginType;
@@ -20,6 +21,7 @@ public class LoginServiceImpl implements LoginService { //필드에 MemberServic
     private final GoogleOauth googleOauth;
     private final HttpServletResponse response;
     MemberDao memberMapper;
+    private final MemberRepo memberRepo;
 
     @Override
     public Member login(Member member) {
@@ -65,7 +67,7 @@ public class LoginServiceImpl implements LoginService { //필드에 MemberServic
         String name = (String) userInfo.get("name");
 
         // 데이터베이스에서 사용자 조회
-        Member member = memberMapper.selectMemberByEmail(email);
+        Member member = null;//memberMapper.selectMemberByEmail(email);
 
         if (member == null) {
             // 신규 회원 가입
@@ -79,7 +81,9 @@ public class LoginServiceImpl implements LoginService { //필드에 MemberServic
             member.setRgstId(0); // 시스템 관리자 ID로 설정하거나 적절한 값으로 설정
             member.setUpdtId(0);
 
-            memberMapper.insertMember(member);
+            //memberMapper.insertMember(member); 멤버 리포로 수정
+            memberRepo.insertMember(member);
+
         } else {
             // 기존 회원 로그인 처리
             // 필요에 따라 업데이트 로직 추가
